@@ -20,22 +20,22 @@ public class TestProblema {
             int opc = entrada.nextInt();
 
             if (opc == 1) {
-                double salario;
-                String nombre;
-                int edad;
                 System.out.println("INGRESE: NOMBRE, SALARIO, EDAD");
-                Empleado1 empleado1 = new Empleado1(nombre=entrada.next(), salario = entrada.nextDouble(), edad=entrada.nextInt());
-                cadenafinal = empleado1 + cadenafinal;
-                salarios[i] = salario;
+                String nombre=entrada.next();
+                double salario=entrada.nextDouble();
+                int edad=entrada.nextInt();
+
+                salarios[i] =salario;
                 nombres[i]=nombre;
                 edades[i]=edad;
+                Borradores.Empleado1 empleado1 = new Borradores.Empleado1(nombres,salarios,edades);
                 sumaSalarios += salario;
                 i++;
             } else if (opc == 2) {
-                Empleado1 empleado1= new Empleado1();
+                Borradores.Empleado1 empleado1= new Borradores.Empleado1();
                 empleado1.mostrarInformacion(i,nombres,salarios,edades);
             } else if (opc == 3) {
-                Empleado1 empleado1= new Empleado1();
+                Borradores.Empleado1 empleado1= new Borradores.Empleado1();
                 empleado1.aumentarSueldo(salarios,i,sumaSalarios);
             } else if (opc == 0) {
                 iniciar = false;
@@ -45,43 +45,43 @@ public class TestProblema {
 }
 
 class Empleado1 {
-    private String nombre;
-    private double salario;
-    private int edad;
+    private String nombre[];
+    private double salario[];
+    private int edad[];
 
     public Empleado1() {}
 
-    public Empleado1(String nombre, double salario, int edad) {
+    public Empleado1(String[] nombre, double[] salario, int[] edad) {
         this.nombre = nombre;
         this.salario = salario;
         this.edad = edad;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String[] nombre) {
         this.nombre = nombre;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public void setSalario(double salario) {
+    public void setSalario(double[] salario) {
         this.salario = salario;
     }
 
-    public String getNombre() {
+    public void setEdad(int[] edad) {
+        this.edad = edad;
+    }
+
+    public String[] getNombre() {
         return nombre;
     }
 
-    public double getSalario() {
+    public double[] getSalario() {
         return salario;
     }
 
-    public int getEdad() {
+    public int[] getEdad() {
         return edad;
     }
 
-    public void aumentarSueldo(double salarios[],int i,double sumaSalarios){
+    public void aumentarSueldo(double salarios[], int i, double sumaSalarios){
         Scanner entrada= new Scanner(System.in);
         System.out.println("Ingrese el porcentaje que desea aumentar de salario");
         double aumentoSalario = entrada.nextDouble();
@@ -100,7 +100,7 @@ class Empleado1 {
     }
     public void mostrarInformacion(int i, String nombres[],double salarios[], int edades[]) {
         for (int j = 0; j < i; j++) {
-            System.out.println("Nombre: "+nombres[j]+", Salario: "+salarios[j]+", Edades: "+edades[j]);
+            System.out.println("Nombre: "+nombres[j]+", Salario: "+salarios[j]+", Edad: "+edades[j]);
         }
     }
 
